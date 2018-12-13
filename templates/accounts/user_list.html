@@ -13,13 +13,13 @@
          <td>{{ user }}</td>
          <td>{{ user.etablissement }}</td>
         <td>
-            {% if perms.auth.change_user %}
+            {% if perms.accounts.change_user %}
               <a href="/users/edit/{{ user.pk }}">edit</a>
-            {% elif perms.auth.change_user %}
+            {% elif perms.accounts.change_user %}
               <a href="/users/edit/{{ user.pk }}">edit</a>
             {% endif %}
 
-            {% if perms.auth.delete_user %}
+            {% if perms.accounts.delete_user %}
               <a href="/users/delete/{{ user.pk }}" class="text-danger">delete</a>
             {% endif %}
           </td>
@@ -29,21 +29,6 @@
       </tbody>
     </table>
   </div>
-  <div class="pagination">
-        <span class="step-links">
-            {% if paginator.has_previous %}
-              <a href="?page=1">&laquo; first</a>
-              <a href="?page={{ paginator.previous_page_number }}">previous</a>
-            {% endif %}
+{% include 'paginator.html' %}
 
-          <span class="current">
-                Page {{ paginator.number }} of {{ paginator.paginator.num_pages }}.
-            </span>
-
-          {% if paginator.has_next %}
-            <a href="?page={{ paginator.next_page_number }}">next</a>
-            <a href="?page={{ paginator.paginator.num_pages }}">last &raquo;</a>
-          {% endif %}
-        </span>
-  </div>
 {% endblock %}
