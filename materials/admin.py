@@ -1,7 +1,11 @@
 from django.contrib import admin
-from .models import Hardware, Category
+from django.contrib.auth.models import Permission
+
+from .models import Hardware, Category, Etablissement
 
 admin.site.register(Category)
+admin.site.register(Permission)
+admin.site.register(Etablissement)
 
 
 def convert_price_chf_eur(modeladmin, request, queryset):
