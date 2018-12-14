@@ -16,20 +16,19 @@ class Command(BaseCommand):
         borne, create = Category.objects.get_or_create(name="borne")
         category_list = [ordinateur, tablette, imprimante, serveur, borne]
 
-
         ecublens, create = Etablissement.objects.get_or_create(name="Ecublens")
         fabdev, create = Etablissement.objects.get_or_create(name="Fabdev")
 
-
         for i in range(100):
-            month = random.randint(1,12)
-            day = random.randint(1,28)
-            hour = random.randint(8,18)
-            year = random.randint(2007,2019)
+            month = random.randint(1, 12)
+            day = random.randint(1, 28)
+            hour = random.randint(8, 18)
+            year = random.randint(2007, 2019)
             new_buy_date = datetime.datetime(year, month, day, hour)
             new_category = random.choice(category_list)
             new_etablissement = random.choice([ecublens, ecublens, ecublens, fabdev])
-            new_price = random.randint(100,2000)
-            Hardware.objects.create(category=new_category, buy_date=new_buy_date, price=new_price, etablissement=new_etablissement)
+            new_price = random.randint(100, 2000)
+            Hardware.objects.create(category=new_category, buy_date=new_buy_date, price=new_price,
+                                    etablissement=new_etablissement)
 
         print("100 new hardwares created")
