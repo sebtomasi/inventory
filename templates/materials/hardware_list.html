@@ -5,6 +5,9 @@
 
 {% block main %}
   <h2>Hardwares</h2>
+  <p class="text-right">
+    <a href="{% url 'hardware-create' %}" class="btn btn-primary">New hardware</a>
+  </p>
   <div class="table-responsive">
     <table class="table table-striped table-sm">
       <thead>
@@ -47,4 +50,9 @@
     </table>
   </div>
 {% include 'paginator.html' %}
+{% endblock %}
+
+
+{% block js_extra %}
+
 {% endblock %}
