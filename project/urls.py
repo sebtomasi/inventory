@@ -20,15 +20,10 @@ from accounts.views import UserList, UserUpdate, UserDelete
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('', HardwareList.as_view()),
-    path('create/', HardwareCreate.as_view(), name="hardware-create"),
-    path('edit/<int:pk>', HardwareUpdateLight.as_view()),
-    path('edit/complete/<int:pk>', HardwareUpdateComplete.as_view()),
-    path('delete/<int:pk>', HardwareDelete.as_view()),
+    path('accounts/', include('accounts.urls')),
+    path('', include('materials.urls')),
 
-    path('users/', UserList.as_view()),
-    path('users/edit/<int:pk>', UserUpdate.as_view()),
-    path('users/delete/<int:pk>', UserDelete.as_view())
+
+
 
 ]

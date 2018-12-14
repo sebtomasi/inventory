@@ -3,11 +3,15 @@
 
 {% block title %}Update hardware{% endblock %}
 
-{% block main %}
-  <h2>Edit hardware</h2>
-  <div class="table-responsive">
-    <div class="row">
-      <div class="col-6">
+{% block content %}
+  <div class="box">
+    <div class="box-header with-border">
+      <h3 class="box-title">
+        Edit hardware
+      </h3>
+    </div>
+    <div class="box-body">
+      <div class="table-responsive">
         <form action="" method="post">
           {% csrf_token %}
           {{ form|crispy }}
