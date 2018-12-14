@@ -1,7 +1,4 @@
-from django.contrib import messages
-from django.shortcuts import render, redirect
 from project.utils import FabUpdateView, FabListView, FabCreateView, FabDeleteView
-from django import forms
 from .models import Hardware
 
 
@@ -11,9 +8,19 @@ class HardwareList(FabListView):
     permission_required = "materials.view_hardware"
 
     def get_queryset(self):
+
         if self.request.user.is_superuser:
-            return Hardware.objects.all()
-        return Hardware.objects.filter(etablissement=self.request.user.etablissement)
+            queryset = Hardware.objects.all()
+        else:
+            queryset = Hardware.objects.filter(etablissement=self.request.user.etablissement)
+        start_date = self.request.GET.get("start_date")
+        end_date = self.request.GET.get("end_date")
+        if start_date:
+            queryset = queryset.filter(buy_date__gte=start_date)
+        if end_date:
+            queryset = queryset.filter(buy_date__lte=end_date)
+
+        return queryset
 
 
 class HardwareUpdateLight(FabUpdateView):

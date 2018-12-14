@@ -8,6 +8,29 @@
   <p class="text-right">
     <a href="{% url 'hardware-create' %}" class="btn btn-primary">New hardware</a>
   </p>
+
+  <form action="" method="get">
+    <div class="row">
+      <div class="col-2">
+        <div class="form-group">
+          <label for="">Start date</label>
+          <input type="date" class="form-control" name="start_date" value="{{ request.GET.start_date }}">
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="form-group">
+          <label for="">End date</label>
+          <input type="date" class="form-control" name="end_date" value="{{ request.GET.end_date }}">
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="form-group">
+          <button class="btn btn-primary btn-sm">Filtrer</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
   <div class="table-responsive">
     <table class="table table-striped table-sm">
       <thead>
@@ -26,9 +49,9 @@
           <td>{{ hardware.buy_date }}</td>
           <td>
             {% if hardware.etablissement %}
-            {{ hardware.etablissement}}
+              {{ hardware.etablissement }}
             {% else %}
-            <i class="text-muted">Non défini</i>
+              <i class="text-muted">Non défini</i>
             {% endif %}
           </td>
           <td>{{ hardware.price }}</td>
@@ -49,7 +72,7 @@
       </tbody>
     </table>
   </div>
-{% include 'paginator.html' %}
+  {% include 'paginator.html' %}
 {% endblock %}
 
 
